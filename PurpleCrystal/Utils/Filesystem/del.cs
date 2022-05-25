@@ -16,11 +16,14 @@ namespace PurpleCrystal.Utils.Filesystem
 
             try
             {
+                VFSManager.GetFile(delName);
                 VFSManager.DeleteFile(delName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.ToString());
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: Cannot write to this file, because it doesn't exist.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
         }

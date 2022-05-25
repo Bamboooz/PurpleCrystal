@@ -20,9 +20,11 @@ namespace PurpleCrystal.Utils.Filesystem
                 {
                     VFSManager.CreateFile(fileName);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    Console.WriteLine(e.ToString());
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error: Cannot create to this file, because its directory doesn't exist or file already exists.");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
             else

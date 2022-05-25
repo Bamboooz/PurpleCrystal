@@ -1,6 +1,7 @@
 using System;
 using static PurpleCrystal.Prompt.Commands;
 using System.IO;
+using Cosmos.System.FileSystem.VFS;
 
 namespace PurpleCrystal.Utils.Filesystem
 {
@@ -15,11 +16,14 @@ namespace PurpleCrystal.Utils.Filesystem
 
             try
             {
+                VFSManager.GetDirectory(removedDir);
                 Directory.Delete(removedDir);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.ToString());
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: Cannot remove directory, because it doesn't exist.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
         }

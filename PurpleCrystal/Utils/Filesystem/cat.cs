@@ -23,10 +23,13 @@ namespace PurpleCrystal.Utils.Filesystem
                 Console.ForegroundColor = ConsoleColor.White;
                 new_command();
 
-            } else
+            }
+            else
             {
                 try
                 {
+                    VFSManager.GetFile(fileDir);
+
                     var file = VFSManager.GetFile(fileDir);
                     var file_stream = file.GetFileStream();
 
@@ -37,11 +40,12 @@ namespace PurpleCrystal.Utils.Filesystem
                         Console.WriteLine(Encoding.Default.GetString(text_to_read));
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    Console.WriteLine(e.ToString());
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error: Cannot write to this file, because it doesn't exist.");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
-
             }
 
         }

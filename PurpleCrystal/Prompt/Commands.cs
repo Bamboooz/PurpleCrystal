@@ -13,14 +13,15 @@ using static PurpleCrystal.Utils.Filesystem.makedir;
 using static PurpleCrystal.Utils.Filesystem.rmdir;
 using static PurpleCrystal.Utils.Filesystem.touch;
 using static PurpleCrystal.Utils.Filesystem.vol;
+using static PurpleCrystal.Utils.Apps.sysinfo;
 
 namespace PurpleCrystal.Prompt
 {
     class Commands
     {
 
-        public static String consoleInput;
-        public static String username = "";
+        public static string consoleInput;
+        public static string username = "";
 
         public static void new_command()
         {
@@ -43,7 +44,6 @@ namespace PurpleCrystal.Prompt
                 Console.WriteLine("- 'vol' (to list volume)");
                 Console.WriteLine("- 'getfst' (to get file system type)");
                 Console.WriteLine("- 'dir' (to get file and folder list)");
-                Console.WriteLine("- 'cd' (to change current directory)");
                 Console.WriteLine("- 'touch' (to create a file)");
                 Console.WriteLine("- 'edit' (to edit a file)");
                 Console.WriteLine("- 'cat' (to display a text file)");
@@ -140,17 +140,7 @@ namespace PurpleCrystal.Prompt
             }
             else if (consoleInput == "sysinfo")
             {
-                int Total = Convert.ToInt32(Cosmos.Core.CPU.GetAmountOfRAM());
-                int Used = Convert.ToInt32(Cosmos.Core.CPU.GetEndOfKernel() + 1024) / 1048576;
-                int Free = Used * 100 / Total;
-                Console.WriteLine("Info About Your OS:");
-                Console.WriteLine("OS Name: PurpleCrystal");
-                Console.WriteLine("OS Version: PurpleCrystal: v.1.0");
-                Console.WriteLine("OS Creator: @Bamboooz");
-                Console.WriteLine("Memory Info:");
-                Console.WriteLine("Total Memory: " + Total + " MB");
-                Console.WriteLine("Used Memory: " + Used + " MB");
-                Console.WriteLine("Free Memory: " + Free + " MB");
+                run_sysinfo();
                 new_command();
             }
             else if (consoleInput == "oslogo")

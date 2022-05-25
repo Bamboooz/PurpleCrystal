@@ -2,6 +2,7 @@ using System;
 using Sys = Cosmos.System;
 using System.Text;
 using static PurpleCrystal.Prompt.Commands;
+using Cosmos.System.FileSystem.VFS;
 
 namespace PurpleCrystal.Utils.Filesystem
 {
@@ -17,7 +18,9 @@ namespace PurpleCrystal.Utils.Filesystem
 
             try
             {
-                var file = Sys.FileSystem.VFS.VFSManager.GetFile(fileDir);
+                VFSManager.GetFile(fileDir);
+
+                var file = VFSManager.GetFile(fileDir);
                 var file_stream = file.GetFileStream();
            
                 if (file_stream.CanWrite)
@@ -28,9 +31,11 @@ namespace PurpleCrystal.Utils.Filesystem
                     file_stream.Write(text_to_write, 0, text_to_write.Length);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.ToString());
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: Cannot edit file, because it doesn't exist.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
         }

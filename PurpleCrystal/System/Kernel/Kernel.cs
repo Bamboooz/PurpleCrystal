@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Cosmos.System.FileSystem.VFS;
 using Sys = Cosmos.System;
 using static PurpleCrystal.System.Boot.boot;
+using System.IO;
 
 namespace PurpleCrystal
 {
@@ -12,7 +12,7 @@ namespace PurpleCrystal
         protected override void BeforeRun()
         {
             Sys.FileSystem.CosmosVFS fs = new Sys.FileSystem.CosmosVFS();
-            Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
+            VFSManager.RegisterVFS(fs);
         }
 
         protected override void Run()

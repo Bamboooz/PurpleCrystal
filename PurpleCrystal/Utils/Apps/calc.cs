@@ -28,8 +28,8 @@ namespace PurpleCrystal.Utils.Apps
             return true;
         }
 
-        public static void simplecalc() {
-
+        public static void simplecalc()
+        {
             Console.WriteLine();
 
             num1 = 0;
@@ -67,14 +67,13 @@ namespace PurpleCrystal.Utils.Apps
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Operation Type Cannot Be Diffrent Than ' +, -, *, / '");
                 Console.ForegroundColor = ConsoleColor.White;
-                simplecalc();
+                new_command();
             }
 
         }
 
         public static void calcNum2()
         {
-
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Enter 2nd Num:");
@@ -82,14 +81,11 @@ namespace PurpleCrystal.Utils.Apps
             user_text();
             var input2 = Console.ReadLine();
             string2 = input2;
-
             containsLetter();
-
         }
 
         public static void maxIntCheck()
         {
-
             num1 = long.Parse(string1);
             num2 = long.Parse(string2);
             
@@ -99,14 +95,12 @@ namespace PurpleCrystal.Utils.Apps
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Number Cannot Be Bigger Than 2147483646.");
                 Console.ForegroundColor = ConsoleColor.White;
-                simplecalc();
+                new_command();
             }
-
         }
 
         public static void containsLetter()
         {
-
             if (IsIntegerString(string1) && IsIntegerString(string2))
             {
                 maxIntCheck();
@@ -116,14 +110,12 @@ namespace PurpleCrystal.Utils.Apps
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Number Cannot Contain Letters.");
                 Console.ForegroundColor = ConsoleColor.White;
-                simplecalc();
+                new_command();
             }
-
         }
 
         public static void calcPrintOutput()
         {
-
             if (operationType == "+")
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -163,7 +155,6 @@ namespace PurpleCrystal.Utils.Apps
                 Console.ForegroundColor = ConsoleColor.White;
                 new_command();
             }
-
         }
 
     }

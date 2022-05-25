@@ -22,11 +22,22 @@ namespace PurpleCrystal.Utils.Filesystem
                 searchdir = cd.dir;
             }
 
-            var directory_list = VFSManager.GetDirectoryListing(searchdir);
-
-            foreach (var directoryEntry in directory_list)
+            try
             {
-                Console.WriteLine(directoryEntry.mName);
+                VFSManager.GetDirectory(searchdir);
+
+                var directory_list = VFSManager.GetDirectoryListing(searchdir);
+
+                foreach (var directoryEntry in directory_list)
+                {
+                    Console.WriteLine(directoryEntry.mName);
+                }
+            }
+            catch (Exception)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: Cannot write to this file, because it doesn't exist.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
         }

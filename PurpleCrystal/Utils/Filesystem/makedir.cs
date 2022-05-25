@@ -17,11 +17,14 @@ namespace PurpleCrystal.Utils.Filesystem
             {
                 try
                 {
-                    VFSManager.CreateDirectory(newDir);
+                    VFSManager.GetDirectory(newDir);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error: Cannot create directory, because it already exists.");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    Console.WriteLine(e.ToString());
+                    VFSManager.CreateDirectory(newDir);
                 }
 
             }
